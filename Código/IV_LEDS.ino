@@ -1,9 +1,9 @@
-#include <IRremote.h>
+#include <IRremote.h>                       // Biblioteca do recetor de infravermelhos
 
 const int pinoLedVermelho = 11;
 const int pinoLedVerde = 12;
 const int pinoLedAzul = 13;
-int pinoInfraVermelhos = 6;     //define input pin on Arduino
+int pinoInfraVermelhos = 6;                 //define input pin on Arduino
 
 IRrecv irrecv(pinoInfraVermelhos);
 decode_results results;
@@ -14,7 +14,7 @@ void setup() {
   pinMode(pinoLedVerde, OUTPUT);
   pinMode(pinoLedAzul, OUTPUT);  
   pinMode(pinoInfraVermelhos, INPUT); 
-  irrecv.enableIRIn();    // Start the receiver 
+  irrecv.enableIRIn();                      // Start the receiver 
   Serial.begin(9600); 
 }
 
@@ -24,14 +24,14 @@ void loop() {
 
   if (irrecv.decode(&results)) {
   translateIR();
-  irrecv.resume(); // Receive the next value
+  irrecv.resume();                          // Recebe o próximo valor
   }  
 
 
 }
 
 
- void translateIR() // takes action based on IR code received describing Car MP3 IR codes 
+ void translateIR()         // takes action based on IR code received describing Car MP3 IR codes 
 {
 
   switch(results.value){
